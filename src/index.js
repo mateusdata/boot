@@ -4,6 +4,7 @@ const { Client } = require("whatsapp-web.js");
 const qrcode = require("qrcode-terminal");
 const frases = require("./frases");
 const puppeteer = require('puppeteer');
+const WebSocket = require('ws');
 
 const app = express();
 const port = 3000;
@@ -25,10 +26,29 @@ const client = new Client({
     }
 });
 
+// Criação do servidor WebSocket
+const wss = new WebSocket.Server({ noServer: true });
+
+let currentQrCodeUrl = ''; // Armazena a URL do QR Code atual
+
 client.on("qr", (qr) => {
-    // Aqui, você pode decidir se quer mostrar no terminal ou no HTML
     console.log("QR Code gerado");
-    qrcode.generate(qr, { small: true }); // Remova essa linha se não quiser ver no terminal
+    qrcode.generate(qr, { small: true }); // Gera QR Code no terminal
+    const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(qr)}&size=300x300`;
+
+    // Verifica se a URL do QR Code mudou
+    if (currentQrCodeUrl !== qrCodeUrl) {
+        currentQrCodeUrl = qrCodeUrl; // Atualiza a URL do QR Code atual
+
+        console.log(`QR Code URL: ${qrCodeUrl}`);
+        
+        // Envia a URL do QR Code para todos os clientes conectados
+        wss.clients.forEach(client => {
+            if (client.readyState === WebSocket.OPEN) {
+                client.send(qrCodeUrl);
+            }
+        });
+    }
 });
 
 client.on("ready", () => {
@@ -62,14 +82,14 @@ client.on("message", (message) => {
         setTimeout(() => {
             client.sendMessage(message.from, frases.Finalizarconversa + frases.PausaFinalizarConversa);
             conversationsEnded.add(message.from);
-        }, 10); // Pausa de 60 minutos
+        }, 60000); // Pausa de 60 segundos
         return;
     } else if (userMessage === "2") {
         client.sendMessage(message.from, frases.Informacoes + frases.VoltarAoMenu);
         setTimeout(() => {
             client.sendMessage(message.from, frases.Finalizarconversa + frases.PausaFinalizarConversa);
             conversationsEnded.add(message.from);
-        }, 10); // Pausa de 60 minutos
+        }, 60000); // Pausa de 60 segundos
         return;
     } else if (userMessage === "3") {
         client.sendMessage(message.from, frases.PortfolioServicos + frases.VoltarAoMenu);
@@ -83,6 +103,13 @@ client.on("message", (message) => {
 
 client.initialize();
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
+});
+
+server.on('upgrade', (request, socket, head) => {
+    wss.handleUpgrade(request, socket, head, (ws) => {
+        console.log('Cliente conectado ao WebSocket');
+        wss.emit('connection', ws, request);
+    });
 });

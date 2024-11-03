@@ -3,34 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code WhatsApp</title>
+    <title>WhatsApp Web QR Code</title>
     <style>
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f0f0f0;
-            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
         }
         img {
-            max-width: 100%;
-            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: none; /* Inicialmente escondido */
         }
     </style>
 </head>
 <body>
-    <div id="qrcode">QR Code aparecerá aqui!</div>
-
+    <div>
+        <h1>Escaneie o QR Code</h1>
+        <img id="qrcode" src="" alt="QR Code" />
+    </div>
     <script>
-        const socket = new WebSocket('ws://localhost:3000'); // Conexão WebSocket
+        function connectWebSocket() {
+            const ws = new WebSocket('wss://boot-5u9h.onrender.com');
 
-        socket.onmessage = function(event) {
-            const qrCodeData = event.data;
-            const qrcodeDiv = document.getElementById('qrcode');
-            qrcodeDiv.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(qrCodeData)}&size=300x300" alt="QR Code">`;
-        };
+            ws.onmessage = (event) => {
+                const qrCodeImg = document.getElementById('qrcode');
+                qrCodeImg.src = event.data;  // Atualiza o src da imagem com a URL do QR Code recebida
+                qrCodeImg.style.display = 'block'; // Torna o QR Code visível
+                console.log(event.data);
+            };
+
+            ws.onopen = () => {
+                console.log('Conectado ao servidor WebSocket');
+            };
+
+            ws.onclose = () => {
+                console.log('Desconectado do servidor WebSocket');
+                // Tente reconectar após um tempo
+                setTimeout(connectWebSocket, 1000); // Espera 1 segundo para tentar reconectar
+            };
+        }
+
+        // Inicializa a conexão WebSocket ao carregar a página
+        connectWebSocket();
     </script>
 </body>
 </html>
-
