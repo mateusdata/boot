@@ -1,0 +1,112 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36" version="24.8.2">
+  <diagram name="Página-1" id="ZVGciOqxUc8JtrhGnvZI">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="jqCOLGaVETLDZBUXR0sN-1" value="&lt;p data-pm-slice=&quot;1 1 []&quot;&gt;Gel Tarrão - Beleza e Estética&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Agradecemos seu contato! Para melhor atendê-lo, por favor, escolha uma das opções abaixo:&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;1-&lt;/b&gt; Agendamentos&lt;/p&gt;&lt;p&gt;&lt;b&gt;2- &lt;/b&gt;Informações&lt;/p&gt;&lt;p&gt;&lt;b&gt;3- &lt;/b&gt;Portfólio de Serviços&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Se preferir, você também pode nos ligar pelo telefone fixo:&lt;b&gt; (71) 3018-0796.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Estamos aqui para cuidar de você! 💖&lt;/p&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="-40" y="-30" width="240" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="jqCOLGaVETLDZBUXR0sN-3" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="190" y="-60" as="sourcePoint" />
+            <mxPoint x="260" y="-130" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="230" y="-100" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jqCOLGaVETLDZBUXR0sN-4" value="Para agendar seu horário, por favor, informe seu &lt;strong&gt;nome completo&lt;/strong&gt; e o serviço desejado. Estamos prontos para atender você da melhor forma!&lt;span style=&quot;background-color: initial;&quot;&gt;Após enviar as informações, sua conversa será transferida para um de nossos profissionais, que confirmará seu agendamento e esclarecerá qualquer dúvida. 💖&lt;/span&gt;&lt;p&gt;📞 &lt;strong&gt;Se preferir, ligue para:&lt;/strong&gt; &lt;strong&gt;(71) 3018-0796&lt;/strong&gt;&lt;/p&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="290" y="-290" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="jqCOLGaVETLDZBUXR0sN-5" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="260" y="-160" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jqCOLGaVETLDZBUXR0sN-7" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="220" y="100" as="sourcePoint" />
+            <mxPoint x="310" y="100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jqCOLGaVETLDZBUXR0sN-8" value="2" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="310" y="88" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jqCOLGaVETLDZBUXR0sN-9" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="jqCOLGaVETLDZBUXR0sN-10">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="210" y="220" as="sourcePoint" />
+            <mxPoint x="270" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jqCOLGaVETLDZBUXR0sN-10" value="3" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="280" y="300" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jqCOLGaVETLDZBUXR0sN-11" value="Estamos aqui para esclarecer suas dúvidas! Se você tem alguma pergunta sobre nossos serviços, horários, preços ou qualquer outra informação, fique à vontade para perguntar.Por favor, informe seu &lt;strong&gt;nome completo&lt;/strong&gt; para que possamos atendê-lo melhor. Em instantes, sua conversa será transferida para um de nossos profissionais." style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="340" width="180" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="jqCOLGaVETLDZBUXR0sN-12" value="No Gel Tarrão, oferecemos uma ampla variedade de serviços para cuidar da sua beleza e bem-estar. Escolha algumas das nossas principais categorias:&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;1- Cabelos&amp;nbsp;&lt;/div&gt;&lt;div&gt;2- Estética&amp;nbsp;&lt;/div&gt;&lt;div&gt;3- Unhas&amp;nbsp;&lt;/div&gt;&lt;div&gt;4- Maquiagem&lt;/div&gt;&lt;div&gt;5-sobrancelhas&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Digite 0 para voltar ao menu anterior.&amp;nbsp;&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="319" y="270" width="210" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="jqCOLGaVETLDZBUXR0sN-14" value="&lt;p&gt;Aqui está algum dos nossos serviços:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Limpeza de Pele&lt;/li&gt;&lt;li&gt;Drenagem Linfática&lt;/li&gt;&lt;li&gt;Massagem Modeladora&lt;/li&gt;&lt;li&gt;Depilação de Axilas&lt;/li&gt;&lt;li&gt;Depilação de Buço&lt;/li&gt;&lt;li&gt;Depilação de Perna Inteira&lt;/li&gt;&lt;li&gt;Peeling Químico&lt;/li&gt;&lt;li&gt;Microagulhamento&lt;/li&gt;&lt;li&gt;Massagem Relaxante&lt;/li&gt;&lt;li&gt;Depilação de Virilha Completa&lt;/li&gt;&lt;/ul&gt;&lt;div&gt;Para mais informações, digite &lt;b&gt;0&lt;/b&gt; para voltar ao menu anterior e digite &lt;b&gt;2&lt;/b&gt;.&amp;nbsp;&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="715" y="468" width="275" height="275" as="geometry" />
+        </mxCell>
+        <mxCell id="jqCOLGaVETLDZBUXR0sN-15" value="&lt;p&gt;Aqui está algum dos nossos serviços:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Manicure e Pedicure&lt;/li&gt;&lt;li&gt;Esmaltação em Gel&lt;/li&gt;&lt;li&gt;Unha de Acrigel&lt;/li&gt;&lt;li&gt;Unha de Fibra de Vidro&lt;/li&gt;&lt;li&gt;Unha de Gel&lt;/li&gt;&lt;li&gt;Francesinha&lt;/li&gt;&lt;li&gt;Banho de Gel&lt;/li&gt;&lt;li&gt;Blindagem de Unhas&lt;/li&gt;&lt;li&gt;Spa dos Pés&lt;/li&gt;&lt;li&gt;Top Coat&lt;/li&gt;&lt;/ul&gt;&lt;div&gt;Para mais informações, digite &lt;b&gt;0&lt;/b&gt; para voltar ao menu anterior e digite &lt;b&gt;2&lt;/b&gt;.&amp;nbsp;&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="440" y="670" width="250" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="jqCOLGaVETLDZBUXR0sN-16" value="&lt;p&gt;Aqui está algum dos nossos serviços:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Maquiagem Social&lt;/li&gt;&lt;li&gt;Make para Eventos&lt;/li&gt;&lt;li&gt;Make Leve (dia a dia)&lt;/li&gt;&lt;li&gt;Aplicação de Cílios Postiços&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Para mais informações, digite &lt;strong&gt;0&lt;/strong&gt; para voltar ao menu anterior e digite &lt;strong&gt;2&lt;/strong&gt;.&lt;/p&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="160" y="660" width="190" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="jqCOLGaVETLDZBUXR0sN-17" value="&lt;p&gt;Aqui está algum dos nossos serviços:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Design de Sobrancelhas&lt;/li&gt;&lt;li&gt;Henna&lt;/li&gt;&lt;li&gt;Sobrancelha com Linha&lt;/li&gt;&lt;li&gt;Sobrancelha na Cera&lt;/li&gt;&lt;li&gt;Sobrancelha na Pinça&lt;/li&gt;&lt;li&gt;Micropigmentação&lt;/li&gt;&lt;li&gt;Coloração de Sobrancelhas&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Para mais informações, digite &lt;strong&gt;0&lt;/strong&gt; para voltar ao menu anterior e digite &lt;strong&gt;2&lt;/strong&gt;.&lt;/p&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="-130" y="400" width="230" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="jqCOLGaVETLDZBUXR0sN-18" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="570" y="300" as="sourcePoint" />
+            <mxPoint x="665" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jqCOLGaVETLDZBUXR0sN-19" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="338.82" y="530" as="sourcePoint" />
+            <mxPoint x="280" y="640" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jqCOLGaVETLDZBUXR0sN-20" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="260" y="438" as="sourcePoint" />
+            <mxPoint x="130" y="458" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jqCOLGaVETLDZBUXR0sN-21" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="540" y="560" as="sourcePoint" />
+            <mxPoint x="580" y="640" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jqCOLGaVETLDZBUXR0sN-22" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="590" y="455" as="sourcePoint" />
+            <mxPoint x="690" y="485" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jqCOLGaVETLDZBUXR0sN-24" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="535" y="288" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jqCOLGaVETLDZBUXR0sN-25" value="2" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="535" y="428" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jqCOLGaVETLDZBUXR0sN-26" value="3" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="505" y="518" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jqCOLGaVETLDZBUXR0sN-27" value="4" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="340" y="488" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jqCOLGaVETLDZBUXR0sN-28" value="5" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="275" y="418" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jqCOLGaVETLDZBUXR0sN-29" value="&lt;p&gt;Aqui está algum dos nossos serviços:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Corte Masculino&lt;/li&gt;&lt;li&gt;Corte Feminino&lt;/li&gt;&lt;li&gt;Coloração&lt;/li&gt;&lt;li&gt;Mechas Californianas&lt;/li&gt;&lt;li&gt;Balaiagem&lt;/li&gt;&lt;li&gt;Escova Progressiva sem Formol&lt;/li&gt;&lt;li&gt;Hidratação&lt;/li&gt;&lt;li&gt;Luzes&lt;/li&gt;&lt;li&gt;Penteado&lt;/li&gt;&lt;li&gt;Corte Infantil&lt;/li&gt;&lt;/ul&gt;&lt;div&gt;Para mais informações, digite &lt;b&gt;0&lt;/b&gt; para voltar ao menu anterior e digite &lt;b&gt;2&lt;/b&gt;.&amp;nbsp;&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="715" y="180" width="265" height="265" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
