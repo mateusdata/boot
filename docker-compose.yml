@@ -8,7 +8,6 @@ services:
     container_name: boot-whatsapp  
     ports:
       - "3000:3000"  
-    volumes:
-      - ./src:/usr/src/app/src  
+   
     restart: unless-stopped  
 
