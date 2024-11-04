@@ -4,34 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WhatsApp Web QR Code</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f5f5f5;
+            background-color: #1F1F1F; /* Fundo cinza escuro */
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            color: #FFFFFF; /* Cor do texto em branco para contraste */
         }
         img {
             border: 1px solid #ccc;
             border-radius: 5px;
-            display: none; /* Inicialmente escondido */
+            display: none;
+            margin-top: 10px;
+        }
+        .link-container {
+            margin-top: 10px;
+            text-align: center;
+        }
+        .link-container a {
+            color: #FFFFFF; /* Cor do link em branco */
+            text-decoration: underline;
+        }
+        .counter {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        .loading {
+            display: none;
+            font-size: 24px;
+            color: #FFFFFF; /* Cor do loading em branco */
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <div>
         <h1>Escaneie o QR Code</h1>
+        <div class="loading" id="loading">
+            <i class="fas fa-spinner fa-spin"></i> Carregando QR Code...
+        </div>
         <img id="qrcode" src="" alt="QR Code" />
+        <div class="link-container">
+            <a id="qrCodeLink" href="#" target="_blank">Abrir QR Code em nova aba</a>
+        </div>
+        <button onclick="openLink()" style="margin-top: 10px;">Abrir link</button>
+        <div class="counter">
+            QR Codes gerados: <span id="qrCodeCount">0</span>
+        </div>
     </div>
     <script>
+        let qrCodeCount = 0;
+
         function connectWebSocket() {
-            const ws = new WebSocket('wss://boot-5u9h.onrender.com');
+            const ws = new WebSocket('ws://localhost:3000');
 
             ws.onmessage = (event) => {
                 const qrCodeImg = document.getElementById('qrcode');
-                qrCodeImg.src = event.data;  // Atualiza o src da imagem com a URL do QR Code recebida
-                qrCodeImg.style.display = 'block'; // Torna o QR Code visível
+                const qrCodeLink = document.getElementById('qrCodeLink');
+                const loading = document.getElementById('loading');
+
+                // Oculta o indicador de carregamento
+                loading.style.display = 'none';
+
+                // Atualiza a imagem e o link
+                qrCodeImg.src = event.data;
+                qrCodeImg.style.display = 'block';
+                qrCodeLink.href = event.data;
+
+                // Atualiza o contador
+                qrCodeCount++;
+                document.getElementById('qrCodeCount').textContent = qrCodeCount;
+
                 console.log(event.data);
             };
 
@@ -41,9 +89,19 @@
 
             ws.onclose = () => {
                 console.log('Desconectado do servidor WebSocket');
-                // Tente reconectar após um tempo
-                setTimeout(connectWebSocket, 1000); // Espera 1 segundo para tentar reconectar
+                setTimeout(connectWebSocket, 1000); // Tentar reconectar após 1 segundo
             };
+
+            // Exibe o indicador de carregamento ao conectar
+            const loading = document.getElementById('loading');
+            loading.style.display = 'block';
+        }
+
+        function openLink() {
+            const qrCodeLink = document.getElementById('qrCodeLink').href;
+            if (qrCodeLink) {
+                window.open(qrCodeLink, '_blank');
+            }
         }
 
         // Inicializa a conexão WebSocket ao carregar a página

@@ -107,9 +107,16 @@ const server = app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
 
+// Tratamento de upgrade para WebSocket
 server.on('upgrade', (request, socket, head) => {
     wss.handleUpgrade(request, socket, head, (ws) => {
         console.log('Cliente conectado ao WebSocket');
+
+        // Se houver um QR Code atual, envia para o novo cliente
+        if (currentQrCodeUrl) {
+            ws.send(currentQrCodeUrl);
+        }
+
         wss.emit('connection', ws, request);
     });
 });
