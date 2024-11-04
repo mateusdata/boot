@@ -61,7 +61,9 @@
         let qrCodeCount = 0;
 
         function connectWebSocket() {
-            const ws = new WebSocket('ws://localhost:3000');
+           // const ws = new WebSocket('ws://localhost:3000');
+            const ws = new WebSocket('wss://boot-5u9h.onrender.com');
+
 
             ws.onmessage = (event) => {
                 const qrCodeImg = document.getElementById('qrcode');
