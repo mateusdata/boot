@@ -1,10 +1,11 @@
 const express = require('express');
 const path = require('path');
 const { Client } = require("whatsapp-web.js");
-const qrcode = require("qrcode-terminal");
 const frases = require("./frases");
 const puppeteer = require('puppeteer');
 const WebSocket = require('ws');
+const QRCode = require('qrcode');
+const term = require('terminal-kit').terminal;
 
 const app = express();
 const port = 3000;
@@ -20,8 +21,8 @@ app.get('/', (req, res) => {
 // Configuração do cliente do WhatsApp com Puppeteer
 const client = new Client({
     puppeteer: {
-        headless: true, // Mantenha true para não abrir uma janela do Chrome
-        executablePath: '/usr/bin/google-chrome', // Ajuste o caminho para o executável do Chrome no seu contêiner
+        headless: true,
+        executablePath: '/usr/bin/google-chrome',
         args: ['--no-sandbox', '--disable-gpu', '--disable-setuid-sandbox']
     }
 });
@@ -29,20 +30,28 @@ const client = new Client({
 // Criação do servidor WebSocket
 const wss = new WebSocket.Server({ noServer: true });
 
-let currentQrCodeUrl = ''; // Armazena a URL do QR Code atual
+let currentQrCodeUrl = '';
+
+// Função para gerar e exibir o QR Code menor no terminal
+const generateSmallQRCode = async (qr) => {
+    try {
+        const qrString = await QRCode.toString(qr, { type: 'terminal', small: true });
+        term(qrString); // Exibe o QR Code no terminal de forma compacta
+    } catch (error) {
+        console.error('Erro ao gerar o QR Code:', error);
+    }
+};
 
 client.on("qr", (qr) => {
     console.log("QR Code gerado");
-    qrcode.generate(qr, { small: true }); // Gera QR Code no terminal
-    const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(qr)}&size=300x300`;
+    generateSmallQRCode(qr); // Gera QR Code menor no terminal
 
-    // Verifica se a URL do QR Code mudou
+    const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(qr)}&size=100x100`;
+
     if (currentQrCodeUrl !== qrCodeUrl) {
-        currentQrCodeUrl = qrCodeUrl; // Atualiza a URL do QR Code atual
-
+        currentQrCodeUrl = qrCodeUrl;
         console.log(`QR Code URL: ${qrCodeUrl}`);
         
-        // Envia a URL do QR Code para todos os clientes conectados
         wss.clients.forEach(client => {
             if (client.readyState === WebSocket.OPEN) {
                 client.send(qrCodeUrl);
@@ -73,31 +82,25 @@ client.on("message", (message) => {
         greetedUsers.add(message.from);
     }
 
-    // Resposta ao pressionar "0"
     if (userMessage === "0") {
         client.sendMessage(message.from, frases.Menu + frases.VoltarAoMenu);
-        return;
     } else if (userMessage === "1") {
         client.sendMessage(message.from, frases.Agendamento + frases.VoltarAoMenu);
         setTimeout(() => {
             client.sendMessage(message.from, frases.Finalizarconversa + frases.PausaFinalizarConversa);
             conversationsEnded.add(message.from);
-        }, 60000); // Pausa de 60 segundos
-        return;
+        }, 60000);
     } else if (userMessage === "2") {
         client.sendMessage(message.from, frases.Informacoes + frases.VoltarAoMenu);
         setTimeout(() => {
             client.sendMessage(message.from, frases.Finalizarconversa + frases.PausaFinalizarConversa);
             conversationsEnded.add(message.from);
-        }, 60000); // Pausa de 60 segundos
-        return;
+        }, 60000);
     } else if (userMessage === "3") {
         client.sendMessage(message.from, frases.PortfolioServicos + frases.VoltarAoMenu);
-        return;
     } else if (userMessage === "fim") {
         conversationsEnded.add(message.from);
         client.sendMessage(message.from, frases.Finalizarconversa + frases.PausaFinalizarConversa);
-        return;
     }
 });
 
@@ -112,7 +115,6 @@ server.on('upgrade', (request, socket, head) => {
     wss.handleUpgrade(request, socket, head, (ws) => {
         console.log('Cliente conectado ao WebSocket');
 
-        // Se houver um QR Code atual, envia para o novo cliente
         if (currentQrCodeUrl) {
             ws.send(currentQrCodeUrl);
         }
