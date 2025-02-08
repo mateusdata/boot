@@ -1,75 +1,51 @@
-// index.js
 const { Client } = require("whatsapp-web.js");
 const qrcode = require("qrcode-terminal");
-const frases = require("./frases");
-const puppeteer = require('puppeteer');
 
 // Configuração do cliente do WhatsApp com Puppeteer
 const client = new Client({
-    puppeteer: {
-        headless: true, // Mantenha true para não abrir uma janela do Chrome
-        executablePath: '/usr/bin/google-chrome', // Ajuste o caminho para o executável do Chrome no seu contêiner
-        args: ['--no-sandbox', '--disable-gpu', '--disable-setuid-sandbox']
-    }
+  puppeteer: {
+    headless: true,
+    executablePath: "/usr/bin/google-chrome",
+    args: ["--no-sandbox", "--disable-gpu", "--disable-setuid-sandbox"],
+  },
 });
 
 client.on("qr", (qr) => {
   qrcode.generate(qr, { small: true });
 });
 
-client.on("ready", () => {
-  console.log("Client is ready!");
-});
+client.on("ready", async () => {
+  console.log("Cliente do WhatsApp está pronto!");
+  const phoneNumbers = [
+    "557197108255@c.us",
+    "5577998393262@c.us",
+  ];
+  async function sendMessages() {
+    for (const number of phoneNumbers) {
+      const messageText = `
+        Olá [cliente], Já têm [dias] dias que você 
+        fez [serviço] aqui. Que tal aproveitar e marcar sua hora? 
+        Equipe Centro de Beleza e Estética Gel Tarrão. 
+        https://www.trinks.com/salao-gel
+      `;
 
-const greetedUsers = new Set();
-const conversationsEnded = new Set();
+      try {
+        await client.sendMessage(number, messageText);
+        console.log(`Mensagem enviada para ${number}`);
+      } catch (err) {
+        console.error(`Erro ao enviar para ${number}:`, err);
+      }
 
-client.on("message", (message) => {
-  if (message.isGroupMsg) return;
 
-  const userMessage = message.body.trim().toLowerCase();
+      const delay = Math.floor(Math.random() * (15000 - 5000 + 1)) + 5000;
+      console.log(`Aguardando ${delay / 1000} segundos antes do próximo envio...`);
+      await new Promise((resolve) => setTimeout(resolve, delay));
+    }
 
-  if (conversationsEnded.has(message.from)) {
-    client.sendMessage(message.from, frases.Finalizarconversaaceitou);
-    return;
+    console.log("Todas as mensagens foram enviadas!");
   }
 
-  if (!greetedUsers.has(message.from)) {
-    client.sendMessage(message.from, frases.Menu);
-    greetedUsers.add(message.from);
-  }
-
-  // Resposta ao pressionar "0"
-  if (userMessage === "0") {
-    client.sendMessage(message.from, frases.Menu + frases.VoltarAoMenu);
-    return;
-  } else if (userMessage === "1") {
-    client.sendMessage(message.from, frases.Agendamento + frases.VoltarAoMenu);
-    setTimeout(() => {
-      client.sendMessage(message.from, frases.Finalizarconversa + frases.PausaFinalizarConversa);
-      conversationsEnded.add(message.from);
-    }, 10); // Pausa de 60 minutos
-    return;
-  } else if (userMessage === "2") {
-    client.sendMessage(message.from, frases.Informacoes + frases.VoltarAoMenu);
-    setTimeout(() => {
-      client.sendMessage(message.from, frases.Finalizarconversa + frases.PausaFinalizarConversa);
-      conversationsEnded.add(message.from);
-    }, 10); // Pausa de 60 minutos
-    return;
-  } else if (userMessage === "3") {
-    client.sendMessage(message.from, frases.PortfolioServicos + frases.VoltarAoMenu);
-    return;
-  } else if (userMessage === "fim") {
-    conversationsEnded.add(message.from);
-    client.sendMessage(message.from, frases.Finalizarconversa + frases.PausaFinalizarConversa);
-    return;
-  }
+  sendMessages();
 });
 
 client.initialize();
-
-
-
-
-
