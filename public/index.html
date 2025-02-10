@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code WhatsApp</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="qrcode">QR Code aparecerá aqui!</div>
+
+    <script>
+        const socket = new WebSocket('ws://localhost:3000'); // Conexão WebSocket
+
+        socket.onmessage = function(event) {
+            const qrCodeData = event.data;
+            const qrcodeDiv = document.getElementById('qrcode');
+            qrcodeDiv.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(qrCodeData)}&size=300x300" alt="QR Code">`;
+        };
+    </script>
+</body>
+</html>
+
